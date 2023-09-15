@@ -1,18 +1,32 @@
 import React from 'react';
 import { Circle } from 'react-circle';
 
-const CircularProgressBar = ({ percentage }) => {
+const CircularProgressBar = ({ percentage = 0 }) => {
 
     let progressColor;
+    let classProgressBar = "circular-progress-bar";
 
-    if (percentage <= 25) progressColor = 'red';
-    else if (percentage <= 50) progressColor = 'orange';
-    else if (percentage <= 75) progressColor = 'yellow';
-    else progressColor = 'rgb(3, 191, 3)';
+    if (percentage <= 25) {
+        progressColor = 'red';
+        classProgressBar += ' percentage25';
+    }
+    else if (percentage <= 50) {
+        progressColor = 'orange';
+        classProgressBar += ' percentage50';
+    }
+    else if (percentage <= 75) {
+        progressColor = 'yellow';
+        classProgressBar += ' percentage75';
+    }
+    else if (percentage <= 100) {
+        progressColor = 'rgb(3, 191, 3)';
+        classProgressBar += ' percentage100';
+    }
 
+    
 
     return (
-        <div className="circular-progress-bar">
+        <div className={classProgressBar}>
         <Circle
             progress={percentage}
             animate={true}

@@ -11,7 +11,9 @@ const SeoChecker = () => {
             <div className="report-container">
 
                 <ReportHeader />
-                <ReportDataCards />
+                <ReportDataCards 
+                nrOfErrors={3}
+                seoPercentage={76}/>
                 <ReportMetrix />
 
             </div>

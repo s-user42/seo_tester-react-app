@@ -1,4 +1,31 @@
 .circular-progress-bar {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
+}
+
+.circular-progress-bar tspan {
+    display: none;
+}
+
+
+
+.percentage25 svg :first-child {
+    fill: rgba(255, 0, 0, 0.1);
+}
+
+
+.percentage25 tspan {
+    fill: black;
+}
+
+.percentage50 svg :first-child {
+    fill: rgba(255, 166, 0, 0.1);
+}
+
+.percentage75 svg :first-child {
+    fill: rgba(255, 255, 0, 0.1);
+}
+
+.percentage100 svg :first-child {
+    fill: rgba(0, 196, 0, 0.1);
 }
