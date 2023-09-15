@@ -1,0 +1,31 @@
+.report-wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+
+.report-container {
+    display: block;
+    margin: 0 auto;
+    max-width: 1250px;
+    width: 100%;
+    position: relative;
+    min-height: 0;
+}
+
+.report__row--data {
+    margin-top: 30px;
+}
+
+.report__main-info {
+    flex: 1;
+    column-gap: 10px;
+}
+
+.report__main-info {
+    align-items: center;
+    -webkit-box-flex: 1;
+}
+
+

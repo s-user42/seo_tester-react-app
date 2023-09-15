@@ -1,0 +1,60 @@
+.change-device-btn {
+    border-radius: 20px;
+    font-size: 15px;
+    max-height: 16px;
+    width: 200px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    color: #140e40;
+    border: none;
+    column-gap: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(14,30,62,0.12);
+}
+
+.change-device-btn::before {
+    position: absolute;
+    
+    content: "";
+    display: block;
+    left: 0;
+    width: 50%;
+    height: 30px;
+    background-color: #ff990037;
+
+    border-radius: 20px;
+    transition: left 0.15s ease-in;
+}
+
+.change-device-btn--icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    margin-right: 5px;
+    fill: white;
+}
+
+.change-device-btn--mobile::before {
+    left: 100px;
+}
+
+.change-device-btn--elem {
+    display: flex;
+    justify-content: start;
+    max-height: 16px;
+    align-items: center;
+}
+
+.change-device-btn p {
+    margin: 0;
+}
+
+@media (max-width: 620px) {
+    .dark-mode-btn {
+        order: 0;
+    }
+}
