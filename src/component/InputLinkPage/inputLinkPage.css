@@ -1,0 +1,24 @@
+.input-link--wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.input-link--container {
+    display: flex;
+    column-gap: 10px;
+    width: 40%;
+    height: 50px;
+    box-sizing: border-box;
+}
+
+.input-link--container * {
+    border-radius: 10px;
+}
+
+.input-link--container button {
+    font-weight: 500;
+    width: 150px;
+    border: none;
+}

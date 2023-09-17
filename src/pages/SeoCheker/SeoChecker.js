@@ -5,15 +5,16 @@ import ReportDataCards from '../../component/ReportDataCards/ReportDataCards';
 import ReportMetrix from '../../component/ReportMetrix/ReportMetrix';
 
 
-const SeoChecker = () => {
+const SeoChecker = ({pageData}) => {
+
     return (
         <div className="report-wrapper">
             <div className="report-container">
 
-                <ReportHeader />
+                <ReportHeader 
+                pageData = {pageData}/>
                 <ReportDataCards 
-                nrOfErrors={3}
-                seoPercentage={76}/>
+                pageData = {pageData}/>
                 <ReportMetrix />
 
             </div>
