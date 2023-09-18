@@ -1,11 +1,12 @@
-import './inputLinkPage.css';
-import Form from 'react-bootstrap/Form';
-import { Button } from 'react-bootstrap';
-import { useEffect, useRef } from 'react';
-import { MDBSpinner } from 'mdb-react-ui-kit';
+import './inputComponent.css';
+
 import ErrorPopup from '../ErrorPopup/ErrorPopup';
 
-const InputLinkPage = ({onSubmit, errorMsg, loading}) => {
+import { MDBSpinner } from 'mdb-react-ui-kit';
+import { Form, Button } from 'react-bootstrap';
+import { useEffect, useRef } from 'react';
+
+const InputComponent = ({onSubmit, errorMsg, loading}) => {
 
     const inputRef = useRef();
 
@@ -17,7 +18,6 @@ const InputLinkPage = ({onSubmit, errorMsg, loading}) => {
 
     const handleKeyDowm = (event) => {
         if (event.key === 'Enter') {
-            console.log(12)
             onSendLink();
         }
     }
@@ -30,36 +30,39 @@ const InputLinkPage = ({onSubmit, errorMsg, loading}) => {
 
     const CustomSpinner = () => {
         return (
-            <MDBSpinner role='status'
-            className='input__page--spinner'>
+            <MDBSpinner role='status' style={{
+                width: 15,
+                height: 15
+            }}>
             <span className='visually-hidden'>Loading...</span>
             </MDBSpinner>
         )
     }
 
+
     return (
-        <div className="input-link--wrapper">
-            <div className="input-link--container">
-                
+        <div className="input__component--wrapper">
+            <div className="input__component--container">
                 <Form.Control 
                 ref={inputRef}
-                className='input-link--form'
-                size="lg" 
+                className='input__component--form'
+                size="sm" 
                 type="text" 
                 placeholder="input web site link" />
                 <Button 
-                className='input__page--button'
+                className='input__component--button'
                 onClick={() => onSendLink()}
+                size='sm'
                 variant="primary">
                     
                     {!loading ? <>Check SEO</> : null}
                     {loading ? <CustomSpinner/> : null}
-                    
+                
                 </Button>
                 {errorMsg ? <ErrorPopup errorMsg={errorMsg}/> : null}
-            </div>  
+            </div>
         </div>
     );
 }
  
-export default InputLinkPage;
+export default InputComponent;

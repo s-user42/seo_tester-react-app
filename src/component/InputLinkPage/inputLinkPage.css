@@ -7,18 +7,33 @@
 
 .input-link--container {
     display: flex;
+    row-gap: 10px;
+    justify-content: center;
     column-gap: 10px;
-    width: 40%;
+    min-width: 40%;
     height: 50px;
     box-sizing: border-box;
 }
 
-.input-link--container * {
-    border-radius: 10px;
-}
+
 
 .input-link--container button {
     font-weight: 500;
     width: 150px;
     border: none;
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width: 500px) {
+    .input-link--container {
+        flex-wrap: wrap;
+    }
+    .input-link--form {
+        margin: 0 10px;
+    }
+    .input__page--spinner {
+        width: 20px;
+        height: 20px;
+    }
 }

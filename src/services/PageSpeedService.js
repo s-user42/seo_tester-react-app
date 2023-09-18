@@ -1,3 +1,4 @@
+
 class PageSpeedService {
     
     getPageData = async (url) => {
@@ -40,11 +41,9 @@ class PageSpeedService {
           return null; 
         }
       }
-
-
-
-      
 }
+
+  
 
 
 export default PageSpeedService; 

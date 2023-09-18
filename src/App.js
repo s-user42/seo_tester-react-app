@@ -8,11 +8,13 @@ import InputLinkPage from './component/InputLinkPage/InputLinkPage';
 
 import { useState } from 'react';
 
+
 function App() {
+
 
   const [link, setLink] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const PageSpeed = new PageSpeedService();
 
@@ -21,7 +23,7 @@ function App() {
   const onSubmit = async (newLink) => {
     
       setLink(newLink)
-      setError(false);
+      setErrorMsg(null);
       setLoading(true);
       await PageSpeed.getPageData(newLink)
       .then((data) => onLoadingData(data))
@@ -33,21 +35,29 @@ function App() {
     setLoading(false);
   }
 
-  const onError = () => {
+  const onError = (error) => {
     setLoading(false);
-    setError(true);
+    if (error.message === "Failed to fetch")
+      setErrorMsg("Network");
+    else 
+      setErrorMsg("Link");
   }
 
   const content = pageData ?
-  <SeoChecker pageData = {pageData}/> : 
-  <InputLinkPage onSubmit = {onSubmit} />
+  <SeoChecker 
+  pageData = {pageData} 
+  loading={loading} 
+  errorMsg={errorMsg}
+  onSubmit={onSubmit}/> : 
+  <InputLinkPage 
+  onSubmit = {onSubmit} 
+  loading={loading}
+  errorMsg={errorMsg}/>
 
 
   return (
     <div className="App">
         {content}
-        {loading ? <>loading</> : null}
-        {error ? <>error</> : null}
     </div>
   );
 }

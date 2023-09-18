@@ -3,11 +3,18 @@ import './seoChecker.css';
 import ReportHeader from '../../component/ReportHeader/ReportHeader';
 import ReportDataCards from '../../component/ReportDataCards/ReportDataCards';
 import ReportMetrix from '../../component/ReportMetrix/ReportMetrix';
+import InputComponent from '../../component/InputComponent/InputComponent';
 
 
-const SeoChecker = ({pageData}) => {
+const SeoChecker = ({pageData, onSubmit, errorMsg, loading}) => {
 
     return (
+        <>
+        <InputComponent 
+        onSubmit={onSubmit}
+        errorMsg={errorMsg}
+        loading={loading}/>
+        
         <div className="report-wrapper">
             <div className="report-container">
 
@@ -19,6 +26,7 @@ const SeoChecker = ({pageData}) => {
 
             </div>
         </div>
+        </>
     );
 }
  

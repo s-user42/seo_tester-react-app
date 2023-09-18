@@ -15,6 +15,11 @@
     box-shadow: 0px 6px 30px rgba(14, 30, 62, 0.08);
 }
 
+.report__data--container img {
+    width: 100%;
+    max-height: 360px;
+}
+
 .report--seo-progress-bar {
     margin-top: 20px;
 }
