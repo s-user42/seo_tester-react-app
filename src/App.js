@@ -11,18 +11,13 @@ import { useState } from 'react';
 
 function App() {
 
-
-  const [link, setLink] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
-
   const PageSpeed = new PageSpeedService();
-
-  const [pageData, setPageData] = useState(null);
+  const [pageData, setPageData] = useState({});
 
   const onSubmit = async (newLink) => {
     
-      setLink(newLink)
       setErrorMsg(null);
       setLoading(true);
       await PageSpeed.getPageData(newLink)
@@ -36,6 +31,7 @@ function App() {
   }
 
   const onError = (error) => {
+    setPageData({});
     setLoading(false);
     if (error.message === "Failed to fetch")
       setErrorMsg("Network");

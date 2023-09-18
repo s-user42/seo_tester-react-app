@@ -1,6 +1,5 @@
 .circular-progress-bar {
-    width: 150px;
-    height: 150px;
+    max-width: 65%;
 }
 
 .circular-progress-bar tspan {

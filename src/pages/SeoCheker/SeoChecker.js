@@ -21,7 +21,8 @@ const SeoChecker = ({pageData, onSubmit, errorMsg, loading}) => {
                 <ReportHeader 
                 pageData = {pageData}/>
                 <ReportDataCards 
-                pageData = {pageData}/>
+                pageData = {pageData}
+                loading = {loading}/>
                 <ReportMetrix />
 
             </div>
