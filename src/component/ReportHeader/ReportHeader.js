@@ -2,21 +2,28 @@ import './reportHeader.css';
 
 import img_not_found from '../../images/icons/img_not_found.png';
 import cloud_download_icon from '../../images/icons/cloud-download-2.svg';
+import SkeletonIcon from '../Skeleton/SkeletonIcon';
+import SkeletonText from '../Skeleton/SkeletonText';
 
 
-const ReportHeader = ({pageData}) => {
+const ReportHeader = ({pageData, loading}) => {
 
-    const {icon, url, title} = pageData;
+    let {icon, url, title} = pageData;
+    icon = icon ? icon : img_not_found;
 
     return (
             <div className='report__row d-flex flex-row'>
                 <div className="report__main-info d-flex">
+                    {loading ? <SkeletonIcon /> :
                     <div className="report__web-icon">
-                        <img src={icon ? icon : img_not_found} alt="icon" />
+                        <img src={icon} alt="icon" />
                     </div>
+                    }
                     <div className="report__web-text">
-                        <div className="report__web--title">{title}</div>
+                        {loading ? <SkeletonText/> : 
+                        <><div className="report__web--title">{title}</div>
                         <a className="report__web--link" href={url} target='_blanc'>{url}</a>
+                        </>}
                     </div>
                 </div>
                 <button className="download-button">

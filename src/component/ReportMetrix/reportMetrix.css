@@ -29,7 +29,7 @@
 }
 
 .reprort__metrix--vitals {
-    height: 200px;
+    min-height: 200px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -webkit-box-align: stretch;
@@ -43,13 +43,12 @@
 
 
 .report__metrix--vitals-graphs { 
+    display: flex;
     -webkit-box-flex: 1;
     flex: 1 1 100%;
     max-width: 60%;
     max-height: 100%;
     box-sizing: border-box;
-    margin-right: 30px;
-    margin-left: 30px;
 }
 
 .google-report--title {
@@ -79,7 +78,7 @@
 .separator-container {
     display: flex;
     align-items: center;
-    height: 100%;
+    min-height: 60%;
 }
 
 .separator {
@@ -87,6 +86,120 @@
     background-color: #0000003d;
     width: 1px;
 }
+
+
+.report__metrix--time-analys {
+    background-color: rgb(249, 249, 249);
+    padding: 0 15px;
+    max-width: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.010em;
+    line-height: 24px;
+}
+
+.time__analys--row {
+    display: flex;
+    width: 100%;
+}
+
+.time__analys--element {
+    align-items: center;
+    display: flex;
+    border-bottom: 1px solid rgb(238, 238, 238);
+    height: 53px;
+    min-height: 0;
+    width: 100%;
+    margin-right: 15px !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
+.time__analys--element p {
+    margin: 0 0 0 10px;
+    color: #130D41;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.010em;
+    line-height: 24px;
+}
+
+.time__analys--info {
+    margin-left: auto;
+    align-items: center;
+    display: flex;
+
+}
+
+.time__analys--color-icon {
+    height: 18px;
+    width: 18px;
+    margin-left: 10px;
+}
+
+.info__icon {
+    position: relative;
+}
+
+.info__icon:hover .info__icon--msg {
+    display: block;
+}
+
+.info__icon--msg {
+    opacity: 0.9;
+    font-size: 13px;
+    border-radius: 5px;
+    width: 250px;
+    font-weight:500 !important;
+    padding: 10px;
+    color: white !important;
+    position: absolute;
+    display: none;
+    background-color: rgb(0, 86, 167);
+    top: -30px;
+    left: 30px;
+    animation: scaleUp 0.1s;
+}
+
+
+@keyframes scaleUp {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+
+
+
+@media screen and (max-width: 980px) {
+    .report__metrix--vitals-graphs {
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+    }
+    .google-report{
+        display: none;
+    }
+    .separator-container {
+        display: none;
+    }
+    .vitals__card {
+        position: relative;
+        padding-bottom: 35px !important;
+        /* margin-bottom: 30px !important; */
+        align-items: center;
+        width: 70%;
+    }
+    .vitals__card--title {
+        display: none;
+    }
+}
+
 
 
 

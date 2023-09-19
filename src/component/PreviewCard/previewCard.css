@@ -1,0 +1,56 @@
+.report__preview {
+    /* -webkit-box-flex: 1; */
+    flex: 1 1 100%;
+    max-width: 50%;
+    max-height: 100%;
+    box-sizing: border-box;
+}
+
+.report__preview--title {
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0;
+}
+
+.report__preview--aditional-info {
+    text-align: center;
+    font-weight: 500;
+    min-height: 50px;
+    width: 100%;
+    margin-top: auto;
+}
+
+.report__preview--aditional-info p {
+    text-align: center;
+    font-weight: 500;
+}
+
+.report__preview--aditional-info span {
+    font-weight: 700;
+}
+
+.report__review--img {
+    max-width: 350px;
+}
+
+
+
+
+
+
+
+/* Skeleton settings */
+.report__preview .skeleton-item1 {
+    width: 60%;
+    margin: 0;
+    height: 10px;
+}
+.report__preview .skeleton-item2 {
+    width: 40%;
+    margin: 0;
+    height: 8px;
+}
+.report__preview .skeleton--blck {
+    align-items: center;
+    row-gap: 10px;
+}

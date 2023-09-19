@@ -1,0 +1,77 @@
+.report--seo-score {
+    padding-bottom: 30px;
+}
+
+.report--seo-score--title {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.report--seo-score--desc {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 50px;
+    text-align: center;
+    margin-top: auto
+}
+
+.report__seo--percentage-info {
+    height: 35px;
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: space-around;
+}
+
+
+.indicator {
+    position: relative;
+    font-size: 10px;
+}
+
+.indicator::before {
+    display: inline-block;
+    content: '';
+    width: 20px;
+    height: 8px;
+    margin: 0 10px;
+    background-color: red;
+}
+
+.green__indicator::before {
+    background-color: green;
+}
+
+.yellow__indicator::before {
+    background-color: yellow;
+}
+
+.orange__indicator::before {
+    background-color: orange;
+}
+
+
+
+
+.circular-progress-bar {
+    max-width: 150px;
+}
+
+
+
+
+/* Skeleton settings */
+.report--seo-score--desc .skeleton-item1 {
+    width: 60%;
+}
+.report--seo-score--desc .skeleton-item2 {
+    width: 40%;
+}
+.report--seo-score--desc .skeleton--blck {
+    align-items: center;
+}

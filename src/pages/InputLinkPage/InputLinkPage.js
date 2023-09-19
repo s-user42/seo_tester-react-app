@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useEffect, useRef } from 'react';
 import { MDBSpinner } from 'mdb-react-ui-kit';
-import ErrorPopup from '../ErrorPopup/ErrorPopup';
+import ErrorPopup from '../../component/ErrorPopup/ErrorPopup';
 
 const InputLinkPage = ({onSubmit, errorMsg, loading}) => {
 

@@ -5,11 +5,12 @@ import { useState } from "react";
 import pc_icon from '../../images/icons/desktop_icon.png';
 import mob_icon from '../../images/icons/mobile_icon.png';
 
-const ChangeDeviceBtn = () => {
+const ChangeDeviceBtn = ({changeDevice}) => {
 
     const [device, setDevice] = useState("pc");
 
     const toggleDevice = () => {
+        changeDevice();
         if (device === "pc") setDevice("ph");
         else if (device === "ph") setDevice("pc");
     }

@@ -1,0 +1,23 @@
+
+  
+.skeleton-item1 {
+    border-radius: 5px;
+    width: 100%;
+    height: 10px; 
+    background-color: #e0e0e0; 
+    margin-bottom: 8px; 
+}
+
+.skeleton-item2 {
+    width: 80%;
+    border-radius: 5px;
+    height: 8px; 
+    background-color: #e0e0e0; 
+}
+
+.skeleton--blck {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}

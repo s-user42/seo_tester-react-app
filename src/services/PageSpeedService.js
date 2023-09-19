@@ -3,7 +3,7 @@ class PageSpeedService {
     
     getPageData = async (url) => {
         let mobileRes = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&strategy=mobile&key=AIzaSyB_k_hJY6iHEnI02V2xUGtd5TqYGEci7lk`);
-        let res = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=AIzaSyB_k_hJY6iHEnI02V2xUGtd5TqYGEci7lk&category=performance`);
+        let res = await fetch(`https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&strategy=desktop&key=AIzaSyB_k_hJY6iHEnI02V2xUGtd5TqYGEci7lk&category=performance`);
         if (!res.ok) throw Error(`Could not fetch ${url}, status: ${res.status}`);
         if (!mobileRes.ok) throw Error(`Could not fetch ${url}, status: ${res.status}`);
         res = await res.json();
@@ -12,19 +12,23 @@ class PageSpeedService {
     }
 
     __transformData = async (data, m_data) => {
+      console.log(data)
         const favicon = await this.__getFavicon(data.lighthouseResult.finalUrl)
         const transformData = {
             score: data.lighthouseResult.categories.performance.score,
             screen: data.lighthouseResult.audits['final-screenshot'].details.data,
             
             interactiveScore: data.lighthouseResult.audits.interactive.score,
+            interactiveTime: data.lighthouseResult.audits.interactive.numericValue,
+
             payloadScore: data.lighthouseResult.audits['total-byte-weight'].score,
             jsBootup: data.lighthouseResult.audits['bootup-time'].score,
 
             url: data.lighthouseResult.finalUrl,
             title: new URL(data.lighthouseResult.finalUrl).hostname,
             icon: favicon,
-            nrOfErrors: data.lighthouseResult.audits['critical-request-chains'].score,
+
+            // nrOfErrors: data.lighthouseResult.audits['critical-request-chains'].score,
             FCP: data.lighthouseResult.audits['first-contentful-paint'].numericValue,
             SI: data.lighthouseResult.audits['speed-index'].numericValue,
             LCP: data.lighthouseResult.audits['largest-contentful-paint'].numericValue,
@@ -36,6 +40,7 @@ class PageSpeedService {
             m_LCP: m_data.lighthouseResult.audits['largest-contentful-paint'].numericValue,
             m_TBT: m_data.lighthouseResult.audits['total-blocking-time'].numericValue,
             m_CLS: m_data.lighthouseResult.audits['cumulative-layout-shift'].numericValue,
+            m_intercativeTime: m_data.lighthouseResult.audits.interactive.numericValue,
             
         }
         return transformData;

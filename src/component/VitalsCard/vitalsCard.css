@@ -1,0 +1,35 @@
+.vitals__card {
+    display: flex;
+    flex-direction: column;
+    margin: 0 30px;
+    flex: 1;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.vitals__card--title {
+    font-weight: 700;
+    font-size: 13px;
+    color: #596679;
+}
+
+.vitals__card--name {
+    color: #2296f3;
+    font-weight: 900;
+    margin-top: 15px;
+    line-height: 48px;
+    font-size: 42px;
+    letter-spacing: -0.005em;
+}
+
+.vitals__card--full-name {
+    font-size: 13px;
+    margin-bottom: 30px;
+    white-space: nowrap;
+    color: #596679;
+    letter-spacing: 0.020em;
+}
+
+.multi-color-progress-bar {
+    width: 100%;
+}

@@ -19,11 +19,16 @@ const SeoChecker = ({pageData, onSubmit, errorMsg, loading}) => {
             <div className="report-container">
 
                 <ReportHeader 
-                pageData = {pageData}/>
+                pageData = {pageData}
+                loading={loading}/>
+
                 <ReportDataCards 
                 pageData = {pageData}
                 loading = {loading}/>
-                <ReportMetrix />
+
+                <ReportMetrix 
+                pageData={pageData}
+                loading={loading}/>
 
             </div>
         </div>

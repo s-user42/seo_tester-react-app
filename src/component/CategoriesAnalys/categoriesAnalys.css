@@ -1,0 +1,15 @@
+.recharts-responsive-container {
+    height: 200px  !important;
+    width: 100% !important;
+}
+
+.report__analysis--radar{
+    font-size: 10px;
+}
+
+.report__analysis--title {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
