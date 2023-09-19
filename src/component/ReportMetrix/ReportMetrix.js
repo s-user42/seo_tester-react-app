@@ -114,7 +114,9 @@ const ReportMetrix = ({pageData}) => {
                     <div className="report__metrix--title">UX & Performance Metrix</div>
                 </div>
 
-                <ChangeDeviceBtn changeDevice={() => setIsMobile(!isMobile)}/>
+                <ChangeDeviceBtn 
+                changeDevice={setIsMobile}
+                isMobile={isMobile}/>
             
             </div>
 
