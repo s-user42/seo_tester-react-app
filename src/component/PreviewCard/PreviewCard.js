@@ -4,8 +4,12 @@ import SkeletonText from '../Skeleton/SkeletonText';
 import SkeletonImg from '../Skeleton/SkeletonImg';
 
 import imgNotFound from '../../images/img_not_found.jpg';
+import { useSelector } from 'react-redux';
 
-const PreviewCard = ({screen, loading}) => {
+const PreviewCard = ({screen}) => {
+
+    const loading = useSelector(state => state.loading);
+
     return (
         <div className="report__data--wrapper report__preview">
             <div className="report__data--container">

@@ -23,6 +23,12 @@
     height: 50%;
 }
 
+.download__report--link {
+    border: none;
+    color: white;
+    text-decoration: none;
+}
+
 
 .report__web-icon img {
     width: 50%;

@@ -1,3 +1,5 @@
+import './radarChart.css';
+
 import React, { PureComponent } from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
@@ -10,7 +12,6 @@ export default class RadarChartComponent extends PureComponent {
         const {pageData} = this.props;
         const {score, m_score, interactiveScore, payloadScore, jsBootup} = pageData
 
-        console.log(score, m_score)
 
         //legacy-javascript
 
@@ -49,6 +50,7 @@ export default class RadarChartComponent extends PureComponent {
             ];
 
             return (
+            <>
             <ResponsiveContainer width="80%" height="80%">
                 <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
                 <PolarGrid />
@@ -57,6 +59,17 @@ export default class RadarChartComponent extends PureComponent {
                 <Radar dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
                 </RadarChart>
             </ResponsiveContainer>
+            <div className="radar__percentage">
+                {data.map((info) => {
+                    let textColor = 'black';
+                    if (info.A > 66.66) textColor = 'green';
+                    else if (info.A > 33.33) textColor = 'rgb(221, 144, 0)';
+                    else textColor = 'red';
+
+                    return <p style={{color: textColor}}><span>{info.subject}</span>: {(info.A).toFixed()}%</p>
+                })}
+            </div>
+            </>
             );
         }
 }

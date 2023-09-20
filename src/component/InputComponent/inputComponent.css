@@ -1,5 +1,9 @@
 .input__component--wrapper {
     box-sizing: border-box;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     padding: 15px;
     background-color: rgb(255, 255, 255);
@@ -21,6 +25,19 @@
 
 .input__component--button {
     width: 120px;
+}
+
+.language__icon {
+    width: 25px;
+}
+
+.dropdown-toggle {
+    border: none;
+    padding: 0;
+}
+
+.dropdown-menu {
+    min-width: 10px;
 }
 
 

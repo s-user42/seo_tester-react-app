@@ -12,7 +12,6 @@ class PageSpeedService {
     }
 
     __transformData = async (data, m_data) => {
-      console.log(data)
         const favicon = await this.__getFavicon(data.lighthouseResult.finalUrl)
         const transformData = {
             score: data.lighthouseResult.categories.performance.score,
@@ -28,7 +27,11 @@ class PageSpeedService {
             title: new URL(data.lighthouseResult.finalUrl).hostname,
             icon: favicon,
 
-            // nrOfErrors: data.lighthouseResult.audits['critical-request-chains'].score,
+            SRT: data.lighthouseResult.audits['server-response-time'].numericValue,
+            m_SRT: m_data.lighthouseResult.audits['server-response-time'].numericValue,
+
+
+            // nrOfErrors: data.l ighthouseResult.audits['critical-request-chains'].score,
             FCP: data.lighthouseResult.audits['first-contentful-paint'].numericValue,
             SI: data.lighthouseResult.audits['speed-index'].numericValue,
             LCP: data.lighthouseResult.audits['largest-contentful-paint'].numericValue,

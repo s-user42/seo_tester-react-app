@@ -4,10 +4,12 @@ import { Button } from 'react-bootstrap';
 import { useEffect, useRef } from 'react';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import ErrorPopup from '../../component/ErrorPopup/ErrorPopup';
+import { useSelector } from 'react-redux';
 
-const InputLinkPage = ({onSubmit, errorMsg, loading}) => {
+const InputLinkPage = ({onSubmit, errorMsg}) => {
 
     const inputRef = useRef();
+    const loading = useSelector(state => state.loading);
 
     useEffect(() => {
         inputRef.current.focus();
@@ -17,7 +19,6 @@ const InputLinkPage = ({onSubmit, errorMsg, loading}) => {
 
     const handleKeyDowm = (event) => {
         if (event.key === 'Enter') {
-            console.log(12)
             onSendLink();
         }
     }

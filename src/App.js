@@ -7,12 +7,15 @@ import SeoChecker from './pages/SeoCheker/SeoChecker';
 import InputLinkPage from './pages/InputLinkPage/InputLinkPage';
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import InputComponent from './component/InputComponent/InputComponent';
 
 
 function App() {
 
+  const dispatch = useDispatch();
+
   const [link, setLink] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [pageData, setPageData] = useState({});
   
@@ -23,7 +26,7 @@ function App() {
   const onSubmit = async (newLink) => {
       setErrorMsg(null);
       setPageData({});
-      setLoading(true);
+      dispatch({type: "isLoading"})
       await PageSpeed.getPageData(newLink)
       .then((data) => onLoadingData(data))
       .catch(onError);
@@ -32,12 +35,12 @@ function App() {
 
   const onLoadingData = (data) => {
     setPageData(data);
-    setLoading(false);
+    dispatch({type: "isNotLoading"})
   }
 
   const onError = (error) => {
     setPageData({});
-    setLoading(false);
+    dispatch({type: "isNotLoading"})
     if (error.message === "Failed to fetch")
       setErrorMsg("Network");
     else 
@@ -47,18 +50,17 @@ function App() {
   
   const content = link ?
   <SeoChecker 
-  pageData = {pageData} 
-  loading={loading} 
-  errorMsg={errorMsg}
-  onSubmit={onSubmit}/> : 
+  pageData = {pageData}/> : 
   <InputLinkPage 
   onSubmit = {onSubmit} 
-  loading={loading}
   errorMsg={errorMsg}/>
 
 
   return (
     <div className="App">
+        <InputComponent 
+        onSubmit={onSubmit}
+        errorMsg={errorMsg}/>
         {content}
     </div>
   );

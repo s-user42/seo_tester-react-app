@@ -10,13 +10,16 @@ import ChangeDeviceBtn from '../ChangeDeviceBtn/ChangeDeviceBtn';
 
 import speedometer_icon from '../../images/icons/speedometer.svg';
 import bookmark_icon from '../../images/icons/bookmark-ribbon-7790.svg';
-import check_mark_icon from '../../images/icons/check-mark-10120.svg';
 import VitalsCard from '../VitalsCard/VitalsCard';
 import { useState } from 'react';
+import { getMetrixData } from '../helper/getMetrixData';
+import { useSelector } from 'react-redux';
 import SkeletonText from '../Skeleton/SkeletonText';
 
 
-const ReportMetrixElement = ({data}) => {
+const ReportMetrixElement = ({data, isEmptyData}) => {
+
+    const loading = useSelector(state => state.loading);
 
     let {fullName, score, info, percent} = data;
     percent = percent * 100;
@@ -36,19 +39,28 @@ const ReportMetrixElement = ({data}) => {
         timeColor = 'red'
     }
 
+    score = score && !isNaN(score) ? score : 0;
 
     return (
         <div className="time__analys--element">
+            {loading ? <SkeletonText />:
+            <>
             <div className='info__icon'>
                 <img src={info_icon} alt="info_icon"/>
                 <p className="info__icon--msg">{info}</p>
             </div>
             <p>{fullName}</p>
-            <span className='time__analys--info' style={{color: timeColor}}>
-                {fullName === 'Cumulative Layout Shift' ? score.toFixed(2) :
-                (score / 1000).toFixed(2)}
-                <img src={img} alt="icon" className="time__analys--color-icon" />
-            </span>
+
+                {!isEmptyData ? 
+                <span className='time__analys--info' style={{color: timeColor}}>
+                    {fullName === 'Cumulative Layout Shift' ? score.toFixed(2) :
+                    (score / 1000).toFixed(2)}
+                    <img src={img} alt="icon" className="time__analys--color-icon" />
+                </span> :
+                null
+                }
+            </>
+            }
         </div>
     )
 }
@@ -57,54 +69,14 @@ const ReportMetrixElement = ({data}) => {
 const ReportMetrix = ({pageData}) => {
 
     const [isMobile, setIsMobile] = useState(false);
+    const {CLS, LCP, m_CLS, m_LCP, SRT, m_SRT} = pageData;
 
-    const {interactiveTime, FCP, TBT, CLS, LCP, SI, m_FCP, m_TBT, m_CLS, m_intercativeTime, m_SI, m_LCP} = pageData;
-    // const {FCP_desc, CLS_desc, TBT_desc, interactive_desc, SI_desc, LCP_desc} = dataDescription;
-    const fcpData = {
-        fullName: 'First Contentful Paint',
-        score: isMobile ? m_FCP : FCP,
-        info: "not info",
-        percent: !isMobile ? (FCP / 4000) : (m_FCP / 4000) 
-    }
-
-    const tiData = {
-        fullName: 'Time to Interactive',
-        score: isMobile ? m_intercativeTime : interactiveTime,
-        info: 'not info',
-        percent: !isMobile ? (interactiveTime / 4000) : (m_intercativeTime / 4000) 
-    }
-
-    const tbtData = {
-        fullName: 'Total Blocking Time',
-        score: isMobile ? m_TBT : TBT,
-        info: 'not info',
-        percent: !isMobile ? (TBT / 3000) : (m_TBT / 3000) 
-    }
-
-    const clsData = {
-        fullName: 'Cumulative Layout Shift',
-        score: isMobile ? m_CLS : CLS,
-        info: 'not info',
-        percent: !isMobile ? (CLS / 0.82) : (m_CLS / 0.82) 
-    }
+    const isEmpty = (obj) => {
+        return Object.entries(obj).length === 0;
+    };
     
-    const lcpData = {
-        fullName: 'Largest Contentful Paint',
-        score: isMobile ? m_LCP : LCP,
-        info: 'not info',
-        percent: !isMobile ? (LCP / 6000) : (m_LCP / 6000) 
-    }
-
-    const siData = {
-        fullName: 'Speed Index',
-        score: isMobile ? m_SI : SI,
-        info: 'not info',
-        percent: !isMobile ? (SI / 5000) : (m_SI / 5000) 
-    }
-
-
-
-
+    const dataArr = getMetrixData(pageData, isMobile);
+    
 
     return (
         <div className="report__metrix">
@@ -134,13 +106,28 @@ const ReportMetrix = ({pageData}) => {
                 <div className="reprort__metrix--vitals">
                     
                     <div className="report__metrix--vitals-graphs">
-                        <VitalsCard name={'LCP'} 
-                        percent={1} desc={'Loading'}/>
-                        <VitalsCard name={'FID'} 
-                        percent={1} desc={'Interactivity'}/>
-                        <VitalsCard name={'CLS'} 
-                        percent={1} desc={'Visual Stability'}/>
-                    </div>
+
+                        <VitalsCard 
+                        name={'LCP'}
+                        score={isMobile ? m_LCP : LCP}
+                        maxScore={isMobile ? 8000 : 6000}
+                        fullName={'Largest Contentful Paint'}
+                        desc={'Loading'}/>
+
+                        <VitalsCard
+                        name={'SRT'}
+                        score={isMobile ? m_SRT : SRT}
+                        maxScore={200}
+                        fullName={'Server Response Time'}
+                        desc={'Interactivity'}/>
+
+                        <VitalsCard 
+                        name={'CLS'}
+                        score={isMobile ? m_CLS : CLS}
+                        maxScore={0.82}
+                        fullName={'Cumulative Layout Shift'}
+                        desc={'Visual Stability'}/>
+                    </div> 
 
                     <div className="separator-container">
                         <div className="separator"></div>
@@ -148,35 +135,27 @@ const ReportMetrix = ({pageData}) => {
 
                     <div className="google-report">
                         <div className="google-report--title">
-                        <img src={check_mark_icon} alt="check mark" />
-                        This page has passed the Google Test! The data refer to the last 28 days of use by users
+                            <p className="info__icon--msg">asdfhsk</p>
+                        Key Insights on Website Performance Metrics
                         </div>
                         <div className="google-report--desc">
-                        Data generated from analysis done by Google on the visits and experience of your users over the last days.
-                        </div>
+                        These data, when combined, offer a deep insight into your website's performance. 
+                        They help gauge how quickly users view critical content (LCP), 
+                        server response time, and the stability of page layout (CLS).
+                        </div> 
+
                     </div>
-
                 </div>
-
-
 
                 <div className="report__metrix--time-analys">
 
-                    <div className="time__analys--row">
-                        <ReportMetrixElement data={fcpData}/>
-                        <ReportMetrixElement data={tiData}/>
-                    </div>
-
-                    <div className="time__analys--row">
-                        <ReportMetrixElement data={siData}/>
-                        <ReportMetrixElement data={tbtData}/>
-                    </div>
-
-                    <div className="time__analys--row">
-                        <ReportMetrixElement data={lcpData}/>
-                        <ReportMetrixElement data={clsData}/>
-                    </div>
-
+                        {dataArr.map((data, index) => (
+                            <ReportMetrixElement 
+                            isEmptyData={isEmpty(pageData)}
+                            key={index}
+                            data={data}/>
+                        ))}
+                        
                 </div>
 
 

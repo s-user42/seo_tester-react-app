@@ -55,7 +55,7 @@
     font-weight: 700;
     color: #130D41;
     display: flex;
-    column-gap: 20px;
+    column-gap: 10px;
     font-size: 14px;
     line-height: 24px;
     letter-spacing: 0.010em;
@@ -64,13 +64,14 @@
 .google-report--desc {
     letter-spacing: 0.020em;
     font-size: 13px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .google-report {
+    max-width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; 
     margin-right: 30px;
     margin-left: 30px;
 }
@@ -88,6 +89,9 @@
 }
 
 
+
+
+
 .report__metrix--time-analys {
     background-color: rgb(249, 249, 249);
     padding: 0 15px;
@@ -98,11 +102,9 @@
     font-weight: 500;
     letter-spacing: 0.010em;
     line-height: 24px;
-}
-
-.time__analys--row {
-    display: flex;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 20px;
 }
 
 .time__analys--element {
@@ -197,6 +199,12 @@
     }
     .vitals__card--title {
         display: none;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .report__metrix--time-analys { 
+        display: block;
     }
 }
 

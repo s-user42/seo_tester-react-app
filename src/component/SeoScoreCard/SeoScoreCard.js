@@ -2,8 +2,11 @@ import './seoScoreCard.css';
 
 import CircularProgressBar from '../ProgressBar/CircularProgressBar';
 import SkeletonText from '../Skeleton/SkeletonText';
+import { useSelector } from 'react-redux';
 
-const SeoScoreCard = ({score, loading, isEmpty}) => {
+const SeoScoreCard = ({score, isEmpty}) => {
+
+    const loading = useSelector(state => state.loading);
 
     let seoScoreMsg = isEmpty ? "Not data..." : `The speed of your page is ${score}% of optimal.`
 

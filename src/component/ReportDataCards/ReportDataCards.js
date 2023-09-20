@@ -3,8 +3,11 @@ import './reportDataCards.css';
 import SeoScoreCard from '../SeoScoreCard/SeoScoreCard';
 import PreviewCard from '../PreviewCard/PreviewCard';
 import CategoriesAnalys from '../CategoriesAnalys/CategorierAnalys';
+import { useSelector } from 'react-redux';
 
-const ReportDataCards = ({pageData, loading}) => {
+const ReportDataCards = ({pageData}) => {
+
+    const loading = useSelector(state => state.loading)
 
     const {FCP, SI, LCP, TBT, CLS, screen} = pageData;
     let CLS_percentage = null
@@ -24,7 +27,7 @@ const ReportDataCards = ({pageData, loading}) => {
         FCP_percentage = (1-(FCP / 4000)) * 0.10;
         SI_percentage = (1-(SI / 5000)) * 0.10;
         LCP_percentage = (1-(LCP / 6000)) * 0.25;
-        TBT_percentage = (1-(TBT / 3000)) * 0.30;
+        TBT_percentage = (1-(TBT / 2000)) * 0.30;
         score = Math.round((CLS_percentage + FCP_percentage + SI_percentage + LCP_percentage + TBT_percentage) * 100);
     } else {
         score = 0;
@@ -36,15 +39,10 @@ const ReportDataCards = ({pageData, loading}) => {
             
             <SeoScoreCard 
             isEmpty={isEmpty(pageData)}
-            loading={loading}
             score={score}/>
 
-            <PreviewCard 
-            loading={loading}
-            screen={screen}/>
-
-            <CategoriesAnalys
-            pageData={pageData}/>
+            <PreviewCard screen={screen}/>
+            <CategoriesAnalys pageData={pageData}/>
 
         </div>      
     );

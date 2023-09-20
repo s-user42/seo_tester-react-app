@@ -10,6 +10,9 @@ const CategoriesAnalys = ({pageData}) => {
                 SEO Categories Analysis
                 </p>
                 <RadarChartComponent pageData={pageData}/>
+                <p className='report__analysis--title'>
+                
+                </p>
             </div>
         </div>
     );
