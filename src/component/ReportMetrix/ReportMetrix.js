@@ -1,19 +1,17 @@
 import './reportMetrix.css';
 
-import info_icon from '../../images/icons/icons8-info (1).svg';
+import { useSelector } from 'react-redux';
+import { getMetrixData } from '../helper/getMetrixData';
 
+import info_icon from '../../images/icons/icons8-info (1).svg';
 import red_triangle from '../../images/warning_icon.png';
 import orange_circle from '../../images/ornage_circle.webp';
 import green_icon from '../../images/check.png';
-
-import ChangeDeviceBtn from '../ChangeDeviceBtn/ChangeDeviceBtn';
-
 import speedometer_icon from '../../images/icons/speedometer.svg';
 import bookmark_icon from '../../images/icons/bookmark-ribbon-7790.svg';
+
+import ChangeDeviceBtn from '../ChangeDeviceBtn/ChangeDeviceBtn';
 import VitalsCard from '../VitalsCard/VitalsCard';
-import { useState } from 'react';
-import { getMetrixData } from '../helper/getMetrixData';
-import { useSelector } from 'react-redux';
 import SkeletonText from '../Skeleton/SkeletonText';
 
 
@@ -68,7 +66,7 @@ const ReportMetrixElement = ({data, isEmptyData}) => {
 
 const ReportMetrix = ({pageData}) => {
 
-    const [isMobile, setIsMobile] = useState(false);
+    const isMobile = useSelector(state => state.isMobile)
     const {CLS, LCP, m_CLS, m_LCP, SRT, m_SRT} = pageData;
 
     const isEmpty = (obj) => {
@@ -77,7 +75,6 @@ const ReportMetrix = ({pageData}) => {
     
     const dataArr = getMetrixData(pageData, isMobile);
     
-
     return (
         <div className="report__metrix">
             <div className="report__metrix--head">
@@ -86,9 +83,7 @@ const ReportMetrix = ({pageData}) => {
                     <div className="report__metrix--title">UX & Performance Metrix</div>
                 </div>
 
-                <ChangeDeviceBtn 
-                changeDevice={setIsMobile}
-                isMobile={isMobile}/>
+                <ChangeDeviceBtn />
             
             </div>
 

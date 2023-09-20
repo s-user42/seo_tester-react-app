@@ -1,7 +1,7 @@
 export const getMetrixData = (pageData, isMobile) => {
 
-    const {interactiveTime, FCP, TBT, CLS, LCP, SI, m_FCP, m_TBT, m_CLS, m_intercativeTime, m_SI, m_LCP} = pageData;
 
+    const {interactiveTime, FCP, TBT, CLS, LCP, SI, m_FCP, m_TBT, m_CLS, m_intercativeTime, m_SI, m_LCP} = pageData;
 
     const fcpData = {
         fullName: 'First Contentful Paint',

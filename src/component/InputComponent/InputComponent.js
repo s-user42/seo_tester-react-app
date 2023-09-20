@@ -9,12 +9,16 @@ import { MDBSpinner } from 'mdb-react-ui-kit';
 import { Form, Button } from 'react-bootstrap';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const InputComponent = ({onSubmit, errorMsg}) => {
 
     const dispatch = useDispatch();
+
     const language = useSelector(state => state.language);
     const loading = useSelector(state => state.loading);
+
+    const {t, i18n} = useTranslation();
 
     const inputRef = useRef();
 
@@ -47,10 +51,9 @@ const InputComponent = ({onSubmit, errorMsg}) => {
         )
     }
 
-    console.log(language)
-
 
     const changeLanguage = (lang) => {
+        i18n.changeLanguage(lang)
         dispatch({type: 'language', payload: lang})
     }
 
@@ -62,14 +65,14 @@ const InputComponent = ({onSubmit, errorMsg}) => {
                 className='input__component--form'
                 size="sm" 
                 type="text" 
-                placeholder="input web site link" />
+                placeholder={t('input-placeholder')} />
                 <Button 
                 className='input__component--button'
                 onClick={() => onSendLink()}
                 size='sm'
                 variant="primary">
                     
-                    {!loading ? <>Check SEO</> : null}
+                    {!loading ? <>{t('check-seo')}</> : null}
                     {loading ? <CustomSpinner/> : null}
                 
                 </Button>
@@ -83,13 +86,13 @@ const InputComponent = ({onSubmit, errorMsg}) => {
                     <Dropdown.Menu>
                         <Dropdown.Item 
                         style={{color: language === "en" ? 'blue' : ''}}
-                        onClick={() => changeLanguage("en")}>EN (English)</Dropdown.Item>
+                        onClick={() => changeLanguage("en")}>EN ({t('eng')})</Dropdown.Item>
                         <Dropdown.Item 
                         style={{color: language === "ro" ? 'blue' : ''}}
-                        onClick={() => changeLanguage("ro")}>RO (Romanian)</Dropdown.Item>
+                        onClick={() => changeLanguage("ro")}>RO ({t('rom')})</Dropdown.Item>
                         <Dropdown.Item 
                         style={{color: language === "ru" ? 'blue' : ''}}
-                        onClick={() => changeLanguage("ru")}>RU (Russian)</Dropdown.Item>
+                        onClick={() => changeLanguage("ru")}>RU ({t('rus')})</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
 

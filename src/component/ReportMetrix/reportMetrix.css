@@ -1,13 +1,14 @@
 .report__metrix--head {
     margin-top: 60px;
     display: flex;
-    padding: 15px;
+    padding: 15px 0;
 }
 
 .report__metrix--title {
     font-weight: 700;
     line-height: 24px;
     font-size: 18px;
+    margin: 0 10px;
 }
 
 .report__metrix-card--wrapper {
@@ -87,10 +88,6 @@
     background-color: #0000003d;
     width: 1px;
 }
-
-
-
-
 
 .report__metrix--time-analys {
     background-color: rgb(249, 249, 249);
@@ -208,6 +205,18 @@
     }
 }
 
+@media screen and (max-width: 800px) {
+    .report__metrix--title {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .report__metrix--head {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
 
 
 

@@ -17,14 +17,12 @@
 
 .change-device-btn::before {
     position: absolute;
-    
     content: "";
     display: block;
     left: 0;
     width: 50%;
     height: 30px;
     background-color: #ff990037;
-
     border-radius: 20px;
     transition: left 0.15s ease-in;
 }

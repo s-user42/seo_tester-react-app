@@ -1,10 +1,10 @@
 .report__data--content {
+    margin-top: 30px;
     display: flex;
-    column-gap: 30px;
+    gap: 30px;
 }
 
 .report__data--wrapper {
-    margin-top: 30px;
     background-color: white;
     padding: 30px 20px 20px 20px;
     height: 417px;
@@ -35,10 +35,6 @@
 
 
 
-
-
-
-
 @media screen and (max-width: 1200px) {
     .report__analysis {
         display: none;
@@ -64,8 +60,12 @@
     }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 680px) {
     .report-container {
         width: 100%
+    }
+    .report__data--content {
+        margin-top: 15px;
+        gap: 20px;
     }
 }

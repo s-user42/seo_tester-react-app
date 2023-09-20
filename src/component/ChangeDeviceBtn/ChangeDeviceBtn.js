@@ -2,12 +2,17 @@ import './changeDeviceBtn.css';
 
 import pc_icon from '../../images/icons/desktop_icon.png';
 import mob_icon from '../../images/icons/mobile_icon.png';
+import { useDispatch, useSelector } from 'react-redux';
 
-const ChangeDeviceBtn = ({changeDevice, isMobile}) => {
+const ChangeDeviceBtn = () => {
+
+    const isMobile = useSelector(state => state.isMobile);
+    const dispatch = useDispatch();
 
     const toggleDevice = () => {
-        changeDevice(!isMobile)
+        dispatch({type: isMobile ? 'isNotMobile' : 'isMobile'})
     }
+
 
     const buttonClass = !isMobile ? "change-device-btn" : "change-device-btn change-device-btn--mobile";
     return (

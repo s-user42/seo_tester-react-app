@@ -21,8 +21,6 @@ function App() {
   
   const PageSpeed = new PageSpeedService();
 
-
-
   const onSubmit = async (newLink) => {
       setErrorMsg(null);
       setPageData({});

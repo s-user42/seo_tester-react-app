@@ -97,6 +97,29 @@
     .download-button span{
         display: none;
     }
+    .download__report--link {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .download-button {
+        padding: 5px 10px !important;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .report__web-icon, .report__web-icon img{
+        width: 40px;
+        height: 40px;
+    }
+    .report__web--title {
+        font-size: 22px;
+        line-height: 22px;
+    }
+    .report__web--link {
+        font-size: 14px;
+    }
 }
 
 .download-button img {
