@@ -13,6 +13,7 @@ import bookmark_icon from '../../images/icons/bookmark-ribbon-7790.svg';
 import ChangeDeviceBtn from '../ChangeDeviceBtn/ChangeDeviceBtn';
 import VitalsCard from '../VitalsCard/VitalsCard';
 import SkeletonText from '../Skeleton/SkeletonText';
+import { useTranslation } from 'react-i18next';
 
 
 const ReportMetrixElement = ({data, isEmptyData}) => {
@@ -52,7 +53,7 @@ const ReportMetrixElement = ({data, isEmptyData}) => {
                 {!isEmptyData ? 
                 <span className='time__analys--info' style={{color: timeColor}}>
                     {fullName === 'Cumulative Layout Shift' ? score.toFixed(2) :
-                    (score / 1000).toFixed(2)}
+                    (score / 1000).toFixed(2) + 's'}
                     <img src={img} alt="icon" className="time__analys--color-icon" />
                 </span> :
                 null
@@ -66,6 +67,8 @@ const ReportMetrixElement = ({data, isEmptyData}) => {
 
 const ReportMetrix = ({pageData}) => {
 
+    const { t } = useTranslation();
+
     const isMobile = useSelector(state => state.isMobile)
     const {CLS, LCP, m_CLS, m_LCP, SRT, m_SRT} = pageData;
 
@@ -73,14 +76,14 @@ const ReportMetrix = ({pageData}) => {
         return Object.entries(obj).length === 0;
     };
     
-    const dataArr = getMetrixData(pageData, isMobile);
+    const dataArr = getMetrixData(pageData, isMobile, t);
     
     return (
         <div className="report__metrix">
             <div className="report__metrix--head">
                 <div className="report__main-info d-flex">
                     <img src={speedometer_icon} alt="metrix icon" />
-                    <div className="report__metrix--title">UX & Performance Metrix</div>
+                    <div className="report__metrix--title">UX & {t("performance-metrix")}</div>
                 </div>
 
                 <ChangeDeviceBtn />
@@ -93,7 +96,7 @@ const ReportMetrix = ({pageData}) => {
                 <div className="report__metrix--core">
                     <div className="report__metrix--core-head">
                         <img src={bookmark_icon} alt="bookmark" />
-                        <div className="report__metrix--core-title">Core web vitals</div>
+                        <div className="report__metrix--core-title">{t("web-vitals")}</div>
                     </div>
                 </div>
 
@@ -106,22 +109,22 @@ const ReportMetrix = ({pageData}) => {
                         name={'LCP'}
                         score={isMobile ? m_LCP : LCP}
                         maxScore={isMobile ? 8000 : 6000}
-                        fullName={'Largest Contentful Paint'}
-                        desc={'Loading'}/>
+                        fullName={t("lcp")}
+                        desc={t("loading")}/>
 
                         <VitalsCard
                         name={'SRT'}
                         score={isMobile ? m_SRT : SRT}
                         maxScore={200}
-                        fullName={'Server Response Time'}
-                        desc={'Interactivity'}/>
+                        fullName={t("srt")}
+                        desc={t("interactivity")}/>
 
                         <VitalsCard 
                         name={'CLS'}
                         score={isMobile ? m_CLS : CLS}
                         maxScore={0.82}
-                        fullName={'Cumulative Layout Shift'}
-                        desc={'Visual Stability'}/>
+                        fullName={t("cls")}
+                        desc={t("visual-stability")}/>
                     </div> 
 
                     <div className="separator-container">
@@ -130,13 +133,10 @@ const ReportMetrix = ({pageData}) => {
 
                     <div className="google-report">
                         <div className="google-report--title">
-                            <p className="info__icon--msg">asdfhsk</p>
-                        Key Insights on Website Performance Metrics
+                        {t("web-vitals-desc-title")}
                         </div>
                         <div className="google-report--desc">
-                        These data, when combined, offer a deep insight into your website's performance. 
-                        They help gauge how quickly users view critical content (LCP), 
-                        server response time, and the stability of page layout (CLS).
+                        {t("web-vitals-desc")}
                         </div> 
 
                     </div>

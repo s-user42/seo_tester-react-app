@@ -1,4 +1,4 @@
-import './inputComponent.css';
+import './header.css';
 import { Dropdown } from 'react-bootstrap';
 
 import ErrorPopup from '../ErrorPopup/ErrorPopup';
@@ -17,25 +17,26 @@ const InputComponent = ({onSubmit, errorMsg}) => {
 
     const language = useSelector(state => state.language);
     const loading = useSelector(state => state.loading);
+    const link = useSelector(state => state.link);
 
     const {t, i18n} = useTranslation();
 
     const inputRef = useRef();
 
     useEffect(() => {
-        inputRef.current.focus();
+        if (link) inputRef.current.focus();
         document.addEventListener('keydown', handleKeyDowm);
         return () => document.removeEventListener('keydown', handleKeyDowm);
     })
 
     const handleKeyDowm = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && link) {
             onSendLink();
         }
     }
 
     const onSendLink = () => {
-        if (inputRef.current.value) {
+        if (inputRef.current.value && link) {
             onSubmit(inputRef.current.value)
         }
     }
@@ -58,8 +59,15 @@ const InputComponent = ({onSubmit, errorMsg}) => {
     }
 
     return (
-        <div className="input__component--wrapper">
-            <div className="input__component--container">
+        <div className="header__wrapper">
+            <div className="header__container">
+
+                <div 
+                onClick={() => dispatch({type: "link", payload: null})}
+                className='header__title'>SEO <span>Checker</span></div>
+
+                {link ? 
+                <>
                 <Form.Control 
                 ref={inputRef}
                 className='input__component--form'
@@ -75,7 +83,9 @@ const InputComponent = ({onSubmit, errorMsg}) => {
                     {!loading ? <>{t('check-seo')}</> : null}
                     {loading ? <CustomSpinner/> : null}
                 
-                </Button>
+                </Button> 
+                </>: null
+                }
                 {errorMsg ? <ErrorPopup errorMsg={errorMsg}/> : null}
 
                 <Dropdown>

@@ -6,14 +6,25 @@ import SkeletonIcon from '../Skeleton/SkeletonIcon';
 import SkeletonText from '../Skeleton/SkeletonText';
 import { useSelector } from 'react-redux';
 import { createRaportFile } from '../helper/createRaportFile';
+import { useTranslation } from 'react-i18next';
+import { useRef } from 'react';
 
 
 const ReportHeader = ({pageData}) => {
 
+    const { t } = useTranslation();
     const loading = useSelector(state => state.loading);
+    const link_element = useRef();
 
     let {icon, url, title} = pageData;
     icon = icon ? icon : img_not_found;
+
+    const isEmpty = (obj) => {
+        return Object.entries(obj).length === 0;
+    };
+
+    const buttonClasses = loading || isEmpty(pageData) ? "download-button disabled-button" : "download-button";
+
 
     return (
             <div className='report__row d-flex flex-row'>
@@ -31,14 +42,18 @@ const ReportHeader = ({pageData}) => {
                         </>}
                     </div>
                 </div>
-                <button className="download-button">
+                <button className={buttonClasses} >
                     <img src={cloud_download_icon} alt="cloud download"/>
-                    <a 
+                    {loading || isEmpty(pageData) ?
+                    <span class="md-body-2 font-bold hide-xs">{t("download-button-text")}</span> :
+                    <a
+                    ref={link_element}
                     href={createRaportFile(pageData)} 
                     className='download__report--link'
                     download="page_speed_report.txt">
-                        <span class="md-body-2 font-bold hide-xs">Download Report</span>
+                        <span class="md-body-2 font-bold hide-xs">{t("download-button-text")}</span>
                     </a>
+                    }
                 </button>
             </div>
     );

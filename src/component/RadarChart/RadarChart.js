@@ -5,13 +5,17 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 
 
 export default class RadarChartComponent extends PureComponent {
-
     
-    render() {
-            
+    render() {    
+        
+        const { t } = this.props;
+
         const {pageData} = this.props;
         const {score, m_score, interactiveScore, payloadScore, jsBootup} = pageData
 
+        const isEmpty = (obj) => {
+            return Object.entries(obj).length === 0;
+        };
 
         //legacy-javascript
 
@@ -23,27 +27,27 @@ export default class RadarChartComponent extends PureComponent {
 
         const data = [
             {
-                subject: 'Payload optimization',
+                subject: t("payload-optimization"),
                 A: payloadScore ? payloadScore * 100 : 0,
                 B: 100,
             },
             {
-                subject: 'Desktop',
+                subject: t("desktop"),
                 A: score ? score * 100 : 0,
                 B: 100,
             },
             {
-                subject: 'JS Bootup',
+                subject: t("js-bootup"),
                 A: jsBootup ? jsBootup * 100 : 0,
                 B: 100,
             },
             {
-                subject: 'Interactive',
+                subject: t("interactive"),
                 A: interactiveScore ? interactiveScore * 100 : 0,
                 B: 100,
             },
             {
-                subject: 'Mobile',
+                subject: t("mobile"),
                 A: m_score ? m_score * 100 : 0,
                 B: 100,
             },
@@ -61,10 +65,11 @@ export default class RadarChartComponent extends PureComponent {
             </ResponsiveContainer>
             <div className="radar__percentage">
                 {data.map((info) => {
-                    let textColor = 'black';
-                    if (info.A > 66.66) textColor = 'green';
+                    let textColor;
+                    if (isEmpty(pageData)) textColor = 'gray';
+                    else if (info.A > 66.66) textColor = 'green';
                     else if (info.A > 33.33) textColor = 'rgb(221, 144, 0)';
-                    else textColor = 'red';
+                    else if (info.A >= 0) textColor = 'red';
 
                     return <p style={{color: textColor}}><span>{info.subject}</span>: {(info.A).toFixed()}%</p>
                 })}

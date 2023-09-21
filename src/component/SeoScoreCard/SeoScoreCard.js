@@ -3,17 +3,20 @@ import './seoScoreCard.css';
 import CircularProgressBar from '../ProgressBar/CircularProgressBar';
 import SkeletonText from '../Skeleton/SkeletonText';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const SeoScoreCard = ({score, isEmpty}) => {
 
+    const { t } = useTranslation();
+
     const loading = useSelector(state => state.loading);
 
-    let seoScoreMsg = isEmpty ? "Not data..." : `The speed of your page is ${score}% of optimal.`
+    let seoScoreMsg = isEmpty ? null : t("seo-score-desc", {score})
 
     return (
         <div className="report__data--wrapper report--seo-score">
             <div className="report__data--container">
-                <div className="report--seo-score--title">SEO score</div>
+                <div className="report--seo-score--title">{t("seo-score")}</div>
                 
                 <CircularProgressBar 
                 percentage={score}

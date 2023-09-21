@@ -8,6 +8,7 @@ import { createStore } from 'redux';
 import './18n';
 
 const defaultState = {
+  link: false,
   loading: false,
   language: "en",
   isMobile: false
@@ -26,6 +27,8 @@ const reducer = (state = defaultState, action) => {
         return {...state, isMobile: true}
       case "isNotMobile": 
         return {...state, isMobile: false} 
+      case "link":
+        return {...state, link: action.payload}
       default: 
         return state;
     }

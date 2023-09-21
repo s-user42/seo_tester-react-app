@@ -5,8 +5,11 @@ import { useEffect, useRef } from 'react';
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import ErrorPopup from '../../component/ErrorPopup/ErrorPopup';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const InputLinkPage = ({onSubmit, errorMsg}) => {
+
+    const { t } = useTranslation();
 
     const inputRef = useRef();
     const loading = useSelector(state => state.loading);
@@ -41,23 +44,32 @@ const InputLinkPage = ({onSubmit, errorMsg}) => {
     return (
         <div className="input-link--wrapper">
             <div className="input-link--container">
-                
-                <Form.Control 
-                ref={inputRef}
-                className='input-link--form'
-                size="lg" 
-                type="text" 
-                placeholder="input web site link" />
-                <Button 
-                className='input__page--button'
-                onClick={() => onSendLink()}
-                variant="primary">
-                    
-                    {!loading ? <>Check SEO</> : null}
-                    {loading ? <CustomSpinner/> : null}
-                    
-                </Button>
-                {errorMsg ? <ErrorPopup errorMsg={errorMsg}/> : null}
+
+                <p className='input__page--title'>
+                {t("input-page-title")}
+                </p>
+                <p className='input__page--subtitle'>
+                {t("input-page-subtitle")}
+                </p>
+
+                <div className="form__container">
+                    <Form.Control 
+                    ref={inputRef}
+                    className='input-link--form'
+                    size="lg" 
+                    type="text" 
+                    placeholder={t("input-placeholder")} />
+                    <Button 
+                    className='input__page--button'
+                    onClick={() => onSendLink()}
+                    variant="primary">
+                        
+                        {!loading ? <>{t("check-seo-input-page")}</> : null}
+                        {loading ? <CustomSpinner/> : null}
+                        
+                    </Button>
+                    {errorMsg ? <ErrorPopup errorMsg={errorMsg}/> : null}
+                </div>
             </div>  
         </div>
     );

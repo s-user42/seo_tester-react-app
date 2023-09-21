@@ -13,7 +13,7 @@ const ErrorPopup = ({errorMsg}) => {
     
     return isVisible ? (
         <div className="error__msg">
-            <p className="msg__text">{errorMsg} error!</p>
+            <p className="msg__text">{errorMsg}!</p>
         </div>
     ) : null;
 }

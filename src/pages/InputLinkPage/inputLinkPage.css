@@ -3,9 +3,16 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    margin: 0 10px
 }
 
 .input-link--container {
+    max-width: 700px;
+    width: 100%;
+    max-width: 700px!important;
+}
+
+.form__container {
     display: flex;
     row-gap: 10px;
     justify-content: center;
@@ -15,6 +22,24 @@
     box-sizing: border-box;
 }
 
+
+.input__page--title, .input__page--subtitle {
+    text-align: center;
+}
+
+.input__page--title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+    margin: 5px 10px;
+}
+
+.input__page--subtitle {
+    color: #596679;
+    font-size: 22px;
+    margin: 0 10px;
+    margin-bottom: 35px;
+}
 
 
 .input-link--container button {
@@ -26,7 +51,14 @@
 
 
 @media screen and (max-width: 500px) {
-    .input-link--container {
+    .input__page--title {
+        font-size: 28px;
+    }
+    .input__page--subtitle {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .form__container {
         flex-wrap: wrap;
     }
     .input-link--form {

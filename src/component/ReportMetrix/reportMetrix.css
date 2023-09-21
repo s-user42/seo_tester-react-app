@@ -57,7 +57,7 @@
     color: #130D41;
     display: flex;
     column-gap: 10px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.010em;
 }
@@ -117,10 +117,9 @@
 }
 
 .time__analys--element p {
-    margin: 0 0 0 10px;
+    margin: 0 10px;
     color: #130D41;
     font-weight: 700;
-    font-size: 14px;
     letter-spacing: 0.010em;
     line-height: 24px;
 }
@@ -147,11 +146,12 @@
 }
 
 .info__icon--msg {
+    line-height: 20px !important;
     opacity: 0.9;
     font-size: 13px;
     border-radius: 5px;
     width: 250px;
-    font-weight:500 !important;
+    font-weight: 500 !important;
     padding: 10px;
     color: white !important;
     position: absolute;
@@ -209,6 +209,9 @@
     .report__metrix--title {
         font-size: 16px;
     }
+    .report__metrix--head {
+        margin-top: 20px;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -216,7 +219,11 @@
         flex-direction: column;
         gap: 5px;
     }
+    .time__analys--element {
+        font-size: 13px;
+    }
 }
+
 
 
 

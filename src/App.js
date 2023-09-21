@@ -7,15 +7,18 @@ import SeoChecker from './pages/SeoCheker/SeoChecker';
 import InputLinkPage from './pages/InputLinkPage/InputLinkPage';
 
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import InputComponent from './component/InputComponent/InputComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import Header from './component/Header/Header';
+import { useTranslation } from 'react-i18next';
 
 
 function App() {
 
-  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
-  const [link, setLink] = useState(null);
+  const dispatch = useDispatch();
+  const link = useSelector(state => state.link);
+
   const [errorMsg, setErrorMsg] = useState('');
   const [pageData, setPageData] = useState({});
   
@@ -26,23 +29,23 @@ function App() {
       setPageData({});
       dispatch({type: "isLoading"})
       await PageSpeed.getPageData(newLink)
-      .then((data) => onLoadingData(data))
+      .then((data) => onLoadingData(data, newLink))
       .catch(onError);
-      setLink(newLink);
   }
 
-  const onLoadingData = (data) => {
+  const onLoadingData = (data, newLink) => {
     setPageData(data);
     dispatch({type: "isNotLoading"})
+    dispatch({type: "link", payload: newLink});
   }
 
   const onError = (error) => {
     setPageData({});
     dispatch({type: "isNotLoading"})
     if (error.message === "Failed to fetch")
-      setErrorMsg("Network");
+      setErrorMsg(t("network-error"));
     else 
-      setErrorMsg("Link");
+      setErrorMsg(t("link-error"));
   }
 
   
@@ -56,7 +59,7 @@ function App() {
 
   return (
     <div className="App">
-        <InputComponent 
+        <Header
         onSubmit={onSubmit}
         errorMsg={errorMsg}/>
         {content}
