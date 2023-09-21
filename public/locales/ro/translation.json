@@ -50,6 +50,7 @@
     "tbt-desc": "Suma tuturor perioadelor de timp între FCP și Timpul până la Interactivitate, când durata sarcinii a depășit 50 ms, exprimată în milisecunde.",
   
     "network-error": "Eroare de rețea",
-    "link-error": "Eroare de link"
+    "link-error": "Eroare de link",
+    "captcha-error": "Captcha nu a fost trecută"
   }
   

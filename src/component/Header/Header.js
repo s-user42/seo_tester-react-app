@@ -10,6 +10,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import useLocalStorage from '../helper/useLocalStorage';
 
 const InputComponent = ({onSubmit, errorMsg}) => {
 
@@ -18,6 +19,8 @@ const InputComponent = ({onSubmit, errorMsg}) => {
     const language = useSelector(state => state.language);
     const loading = useSelector(state => state.loading);
     const link = useSelector(state => state.link);
+
+    const [, setLang] = useLocalStorage('lang');
 
     const {t, i18n} = useTranslation();
 
@@ -54,7 +57,8 @@ const InputComponent = ({onSubmit, errorMsg}) => {
 
 
     const changeLanguage = (lang) => {
-        i18n.changeLanguage(lang)
+        i18n.changeLanguage(lang);
+        setLang(lang);
         dispatch({type: 'language', payload: lang})
     }
 
@@ -63,7 +67,7 @@ const InputComponent = ({onSubmit, errorMsg}) => {
             <div className="header__container">
 
                 <div 
-                onClick={() => dispatch({type: "link", payload: null})}
+                onClick={loading ? null : () => dispatch({type: "link", payload: null})}
                 className='header__title'>SEO <span>Checker</span></div>
 
                 {link ? 

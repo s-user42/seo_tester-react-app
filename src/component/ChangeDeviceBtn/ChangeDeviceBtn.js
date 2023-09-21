@@ -8,16 +8,16 @@ const ChangeDeviceBtn = () => {
 
     const isMobile = useSelector(state => state.isMobile);
     const dispatch = useDispatch();
+    const loading = useSelector(state => state.loading);
 
     const toggleDevice = () => {
         dispatch({type: isMobile ? 'isNotMobile' : 'isMobile'})
     }
 
-
     const buttonClass = !isMobile ? "change-device-btn" : "change-device-btn change-device-btn--mobile";
     return (
         <button 
-        onClick={toggleDevice}
+        onClick={loading ? null : toggleDevice}
         tabIndex='0'
         className={buttonClass}>
             <div className="change-device-btn--elem">

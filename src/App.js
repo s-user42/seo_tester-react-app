@@ -12,23 +12,27 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './component/Header/Header';
 import { useTranslation } from 'react-i18next';
+import useLocalStorage from './component/helper/useLocalStorage';
 
 
 function App() {
 
   const [capthcaIsDone, setCaptchaIsDone] = useState(false);
   const [capthcaMsg, setCaptchaMsg] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const link = useSelector(state => state.link);
   const [errorMsg, setErrorMsg] = useState('');
   const [pageData, setPageData] = useState({});
+  const [LS_language,] = useLocalStorage('lang');
 
   const recaptchaRef = useRef();
 
 
   useEffect(() => {
     recaptchaRef.current.execute();
+    dispatch({type: "language", payload: LS_language ? LS_language : "en"});
+    i18n.changeLanguage(LS_language);
   }, [])
   
   const key = '6LfHREMoAAAAAHivq7kbBxg4MAZyFu8IXX5S6zVq';
