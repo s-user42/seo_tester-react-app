@@ -16,7 +16,7 @@
     "seo-score-desc": "Viteza paginii dvs. este de {{score}}% din optim.",
   
     "website-preview": "Previzualizare site",
-    "website-perview-desc": "Aici este ultima previzualizare generată de",
+    "website-perview-desc": "Aceasta este ultima previzualizare generată de",
   
     "seo-categories-title": "Analiza Categoriilor SEO",
     "payload-optimization": "Optimizarea Încărcăturii",
@@ -31,7 +31,7 @@
     "web-vitals-desc-title": "Informații cheie despre metricele de performanță ale site-ului",
     "web-vitals-desc": "Aceste date, când sunt combinate, oferă o perspectivă profundă asupra performanței site-ului dvs. Ele ajută la evaluarea cât de repede utilizatorii văd conținutul critic (LCP), timpul de răspuns al serverului și stabilitatea aspectului paginii (CLS).",
   
-    "loading": "încărcare",
+    "loading": "Incărcare",
     "interactivity": "Interactivitate",
     "visual-stability": "Stabilitate Vizuală",
     "lcp": "Largest Contentful Paint",

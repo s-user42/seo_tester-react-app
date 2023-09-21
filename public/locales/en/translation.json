@@ -31,7 +31,7 @@
     "web-vitals-desc-title": "Key Insights on Website Performance Metrics",
     "web-vitals-desc": "These data, when combined, offer a deep insight into your website's performance. They help gauge how quickly users view critical content (LCP), server response time, and the stability of page layout (CLS).",
 
-    "loading": "loading",
+    "loading": "Loading",
     "interactivity": "Interactivity",
     "visual-stability": "Visual Stability",
     "lcp": "Largest Contentful Paint",
