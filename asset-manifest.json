@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/seo_tester-react-app/static/css/main.73f3b923.css",
+    "main.js": "/seo_tester-react-app/static/js/main.36eb285e.js",
+    "static/media/check.png": "/seo_tester-react-app/static/media/check.17e18c1f96e18c06364b.png",
+    "static/media/speedometer.svg": "/seo_tester-react-app/static/media/speedometer.31c5f08dae86fdfa887d66b06bcaf095.svg",
+    "static/media/mobile_icon.png": "/seo_tester-react-app/static/media/mobile_icon.82e3b5f35caf8c2de1e4.png",
+    "static/media/img_not_found.jpg": "/seo_tester-react-app/static/media/img_not_found.1b7c8daecaf8c0ef755c.jpg",
+    "static/media/ornage_circle.webp": "/seo_tester-react-app/static/media/ornage_circle.33432eed0677e9363b7e.webp",
+    "static/media/cloud-download-2.svg": "/seo_tester-react-app/static/media/cloud-download-2.deb05f37f2dc3b929f4adf1b2941e87b.svg",
+    "static/media/bookmark-ribbon-7790.svg": "/seo_tester-react-app/static/media/bookmark-ribbon-7790.ad4f33af067600430b341a7d19155b67.svg",
+    "index.html": "/seo_tester-react-app/index.html",
+    "static/media/icons8-info (1).svg": "/seo_tester-react-app/static/media/icons8-info (1).f186831694c84b01f1f044ad53e662db.svg",
+    "static/media/getFetch.cjs": "/seo_tester-react-app/static/media/getFetch.40f37ddea2378391108f.cjs",
+    "main.73f3b923.css.map": "/seo_tester-react-app/static/css/main.73f3b923.css.map",
+    "main.36eb285e.js.map": "/seo_tester-react-app/static/js/main.36eb285e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.73f3b923.css",
+    "static/js/main.36eb285e.js"
+  ]
+}

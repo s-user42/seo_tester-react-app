@@ -1,0 +1,56 @@
+{
+    "eng": "Engleză",
+    "rus": "Rusă",
+    "rom": "Română",
+  
+    "check-seo": "Verifică",
+    "input-placeholder": "Introduceți link-ul",
+  
+    "download-button-text": "Descărcați Raportul",
+  
+    "check-seo-input-page": "Verifică SEO",
+    "input-page-title": "Analizează o pagină web",
+    "input-page-subtitle": "Analizează în profunzime SEO-ul unei pagini web",
+  
+    "seo-score": "Scor SEO",
+    "seo-score-desc": "Viteza paginii dvs. este de {{score}}% din optim.",
+  
+    "website-preview": "Previzualizare site",
+    "website-perview-desc": "Aceasta este ultima previzualizare generată de",
+  
+    "seo-categories-title": "Analiza Categoriilor SEO",
+    "payload-optimization": "Optimizarea Încărcăturii",
+    "js-bootup": "Pornire JS",
+    "desktop": "Desktop",
+    "mobile": "Mobile",
+    "interactive": "Interactiv",
+  
+    "performance-metrix": "Metrice de Performanță",
+  
+    "web-vitals": "Vitale ale Webului de Bază",
+    "web-vitals-desc-title": "Informații cheie despre metricele de performanță ale site-ului",
+    "web-vitals-desc": "Aceste date, când sunt combinate, oferă o perspectivă profundă asupra performanței site-ului dvs. Ele ajută la evaluarea cât de repede utilizatorii văd conținutul critic (LCP), timpul de răspuns al serverului și stabilitatea aspectului paginii (CLS).",
+  
+    "loading": "Incărcare",
+    "interactivity": "Interactivitate",
+    "visual-stability": "Stabilitate Vizuală",
+    "lcp": "Largest Contentful Paint",
+    "srt": "Timpul de Răspuns al Serverului",
+    "cls": "Migrarea Layout-ului Cumulativă",
+    "si": "Indexul de Viteză",
+    "fcp": "First Contentful Paint",
+    "ti": "Timp până la Interactivitate",
+    "tbt": "Timpul Total de Blocare",
+  
+    "lcp-desc": "Largest Contentful Paint marchează momentul în care cel mai mare text sau imagine este pictat.",
+    "cls-desc": "Migrarea Layout-ului Cumulativă măsoară mișcarea elementelor vizibile în cadrul vizual.",
+    "si-desc": "Indexul de Viteză arată cât de repede sunt populate vizual conținuturile unei pagini.",
+    "fcp-desc": "First Contentful Paint marchează momentul în care este pictat primul text sau imagine.",
+    "ti-desc": "Timpul până la Interactivitate este perioada de timp necesară pentru ca pagina să devină complet interactivă.",
+    "tbt-desc": "Suma tuturor perioadelor de timp între FCP și Timpul până la Interactivitate, când durata sarcinii a depășit 50 ms, exprimată în milisecunde.",
+  
+    "network-error": "Eroare de rețea",
+    "link-error": "Eroare de link",
+    "captcha-error": "Captcha nu a fost trecută"
+  }
+  
