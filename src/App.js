@@ -6,7 +6,9 @@ import PageSpeedService from './services/PageSpeedService';
 import SeoChecker from './pages/SeoCheker/SeoChecker';
 import InputLinkPage from './pages/InputLinkPage/InputLinkPage';
 
-import { useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from './component/Header/Header';
 import { useTranslation } from 'react-i18next';
@@ -14,23 +16,36 @@ import { useTranslation } from 'react-i18next';
 
 function App() {
 
+  const [capthcaIsDone, setCaptchaIsDone] = useState(false);
+  const [capthcaMsg, setCaptchaMsg] = useState(false);
   const { t } = useTranslation();
-
   const dispatch = useDispatch();
   const link = useSelector(state => state.link);
-
   const [errorMsg, setErrorMsg] = useState('');
   const [pageData, setPageData] = useState({});
+
+  const recaptchaRef = useRef();
+
+
+  useEffect(() => {
+    recaptchaRef.current.execute();
+  }, [])
   
+  const key = '6LfHREMoAAAAAHivq7kbBxg4MAZyFu8IXX5S6zVq';
+
   const PageSpeed = new PageSpeedService();
 
   const onSubmit = async (newLink) => {
-      setErrorMsg(null);
-      setPageData({});
-      dispatch({type: "isLoading"})
-      await PageSpeed.getPageData(newLink)
-      .then((data) => onLoadingData(data, newLink))
-      .catch(onError);
+      if (capthcaIsDone) {
+        setErrorMsg(null);
+        setPageData({});
+        dispatch({type: "isLoading"})
+        await PageSpeed.getPageData(newLink)
+        .then((data) => onLoadingData(data, newLink))
+        .catch(onError);
+      } else {
+        setCaptchaMsg(true)
+      }
   }
 
   const onLoadingData = (data, newLink) => {
@@ -48,22 +63,38 @@ function App() {
       setErrorMsg(t("link-error"));
   }
 
+  const onChangeCaptcha = (value) => {
+    if (value) {
+      setCaptchaIsDone(true);
+      setCaptchaMsg(false);
+    }
+  }
+
   
-  const content = link ?
+  const content = link && capthcaIsDone ?
   <SeoChecker 
   pageData = {pageData}/> : 
   <InputLinkPage 
-  onSubmit = {onSubmit} 
-  errorMsg={errorMsg}/>
+  capthcaMsg={capthcaMsg}
+  onSubmit={onSubmit} 
+  errorMsg={capthcaMsg ? t("captcha-error") : errorMsg }/>
 
 
   return (
-    <div className="App">
-        <Header
-        onSubmit={onSubmit}
-        errorMsg={errorMsg}/>
-        {content}
-    </div>
+      <div className="App">
+          <Header
+          onSubmit={onSubmit}
+          errorMsg={errorMsg}/>
+          {content}
+
+          <div className="captcha__container">
+          <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={key}
+          onChange={onChangeCaptcha}
+          size="invisible"/>
+          </div>
+      </div>
   );
 }
 
