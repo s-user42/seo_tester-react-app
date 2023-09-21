@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/seo_tester-react-app/static/css/main.73f3b923.css",
-    "main.js": "/seo_tester-react-app/static/js/main.36eb285e.js",
+    "main.js": "/seo_tester-react-app/static/js/main.acf4154b.js",
     "static/media/check.png": "/seo_tester-react-app/static/media/check.17e18c1f96e18c06364b.png",
     "static/media/speedometer.svg": "/seo_tester-react-app/static/media/speedometer.31c5f08dae86fdfa887d66b06bcaf095.svg",
     "static/media/mobile_icon.png": "/seo_tester-react-app/static/media/mobile_icon.82e3b5f35caf8c2de1e4.png",
@@ -13,10 +13,10 @@
     "static/media/icons8-info (1).svg": "/seo_tester-react-app/static/media/icons8-info (1).f186831694c84b01f1f044ad53e662db.svg",
     "static/media/getFetch.cjs": "/seo_tester-react-app/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.73f3b923.css.map": "/seo_tester-react-app/static/css/main.73f3b923.css.map",
-    "main.36eb285e.js.map": "/seo_tester-react-app/static/js/main.36eb285e.js.map"
+    "main.acf4154b.js.map": "/seo_tester-react-app/static/js/main.acf4154b.js.map"
   },
   "entrypoints": [
     "static/css/main.73f3b923.css",
-    "static/js/main.36eb285e.js"
+    "static/js/main.acf4154b.js"
   ]
 }
