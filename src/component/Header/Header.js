@@ -33,7 +33,7 @@ const InputComponent = ({onSubmit, errorMsg}) => {
     })
 
     const handleKeyDowm = (event) => {
-        if (event.key === 'Enter' && link) {
+        if (event.key === 'Enter' && link && !loading) {
             onSendLink();
         }
     }
@@ -79,6 +79,7 @@ const InputComponent = ({onSubmit, errorMsg}) => {
                 type="text" 
                 placeholder={t('input-placeholder')} />
                 <Button 
+                disabled={loading}
                 className='input__component--button'
                 onClick={() => onSendLink()}
                 size='sm'

@@ -21,7 +21,7 @@ const InputLinkPage = ({onSubmit, errorMsg}) => {
     })
 
     const handleKeyDowm = (event) => {
-        if (event.key === 'Enter') {
+        if (event.key === 'Enter' && !loading) {
             onSendLink();
         }
     }
@@ -60,6 +60,7 @@ const InputLinkPage = ({onSubmit, errorMsg}) => {
                     type="text" 
                     placeholder={t("input-placeholder")} />
                     <Button 
+                    disabled={loading}
                     className='input__page--button'
                     onClick={() => onSendLink()}
                     variant="primary">
