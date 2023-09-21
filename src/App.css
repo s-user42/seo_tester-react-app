@@ -28,3 +28,18 @@
 .percentage100 svg :first-child {
     fill: rgba(0, 196, 0, 0.1);
 }
+
+.captcha__container {
+    opacity: 0.8;
+}
+
+.captcha__container:hover {
+    opacity: 1;
+}
+
+
+@media screen and (max-width: 480px) {
+    .captcha__container {
+        display: none;
+    }
+}
